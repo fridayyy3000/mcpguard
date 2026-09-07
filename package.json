@@ -1,0 +1,54 @@
+{
+  "name": "qulr-fde-assessment",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "web"
+  ],
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit && npm run typecheck --workspace web",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "task1:dev": "tsx src/task1/index.ts",
+    "task1:start": "node dist/task1/index.js",
+    "task2:gateway:dev": "tsx src/task2/index.ts",
+    "task2:gateway:start": "node dist/task2/index.js",
+    "task2:mock:dev": "tsx src/task2/mock-index.ts",
+    "task2:mock:start": "node dist/task2/mock-index.js",
+    "task3:gateway:dev": "tsx src/task3/index.ts",
+    "task3:gateway:start": "node dist/task3/index.js",
+    "task3:mock:dev": "tsx src/task3/mock-index.ts",
+    "task3:mock:start": "node dist/task3/mock-index.js",
+    "task4:router:dev": "tsx src/task4/index.ts",
+    "task4:router:start": "node dist/task4/index.js",
+    "task4:mock:dev": "tsx src/task4/mock-index.ts",
+    "task4:mock:start": "node dist/task4/mock-index.js",
+    "product:api:dev": "tsx watch src/demo/index.ts",
+    "product:dev": "concurrently -k -n API,WEB -c green,cyan \"npm run product:api:dev\" \"npm run dev --workspace web\"",
+    "product:build": "npm run build && npm run build --workspace web",
+    "product:start": "node dist/demo/index.js",
+    "test": "npm run build --silent && vitest run",
+    "test:task1": "npm run build --silent && vitest run tests/task1",
+    "test:task2": "npm run build --silent && vitest run tests/task2",
+    "test:task3": "npm run build --silent && vitest run tests/task3",
+    "test:task4": "npm run build --silent && vitest run tests/task4",
+    "check": "npm run format:check && npm run typecheck && npm run test"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "1.30.0",
+    "zod": "4.5.4"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "concurrently": "10.0.5",
+    "prettier": "3.9.6",
+    "tsx": "4.23.13",
+    "typescript": "^5.9.0",
+    "vitest": "5.0.0"
+  }
+}
