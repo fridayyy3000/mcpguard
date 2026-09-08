@@ -1,6 +1,5 @@
 # MCPGuard — Secure Agent Control Plane
 
-**Author:** Gaurav Najpande
 
 MCPGuard turns four independently tested MCP and LLM infrastructure components
 into one runnable product. Its operator interface makes every authorization,
